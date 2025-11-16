@@ -500,9 +500,9 @@ body {
 }
 
 .pub-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .pub-item {

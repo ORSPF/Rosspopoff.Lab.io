@@ -1,18 +1,25 @@
 :root {
-  --bg: #050b0a;
-  --bg-alt: #07110f;
-  --card-bg: rgba(10, 20, 18, 0.95);
-  --card-alt-bg: rgba(10, 16, 20, 0.95);
-  --accent: #54e0b0;
-  --accent-soft: #aee9d3;
-  --accent-warm: #f7d7a0;
-  --text: #f4f7f6;
-  --text-soft: #c6d3cf;
-  --muted: #6f827a;
+  /* Base */
+  --bg: #05070a;            /* near black */
+  --bg-alt: #0b0f16;        /* dark grey blue */
+  --card-bg: rgba(8, 10, 14, 0.96);
+  --card-alt-bg: rgba(10, 14, 20, 0.96);
+
+  /* Accents derived from figure */
+  --accent: #cf4d49;        /* coral red */
+  --accent-soft: #cd85ae;   /* mauve */
+  --accent-warm: #87cab4;   /* teal */
+
+  /* Text */
+  --text: #f7f7f8;          /* off white */
+  --text-soft: #cfd3de;     /* soft grey */
+  --muted: #8b92a3;         /* muted blue grey */
+
+  /* Misc */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --radius-lg: 20px;
   --radius-xl: 32px;
-  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
   --transition-fast: 0.22s ease;
   --transition-med: 0.35s ease;
 }

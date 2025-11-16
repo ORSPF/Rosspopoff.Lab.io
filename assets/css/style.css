@@ -63,7 +63,7 @@ body {
   height: 480px;
   top: -120px;
   left: -80px;
-  background: radial-gradient(circle, #2fe4a8, transparent 60%);
+  background: radial-gradient(circle, #87cab4, transparent 60%); /* teal */
 }
 
 .bg-shape-2 {
@@ -71,7 +71,7 @@ body {
   height: 520px;
   bottom: -160px;
   right: -120px;
-  background: radial-gradient(circle, #ffcd84, transparent 60%);
+  background: radial-gradient(circle, #cf4d49, transparent 60%); /* coral red */
 }
 
 .bg-shape-3 {
@@ -79,7 +79,7 @@ body {
   height: 360px;
   top: 40%;
   left: 55%;
-  background: radial-gradient(circle, #3b8cff, transparent 60%);
+  background: radial-gradient(circle, #6982b5, transparent 60%); /* indigo */
 }
 
 /* Layout helpers */
@@ -322,28 +322,18 @@ body {
 }
 
 .orb-large {
-  width: 180px;
-  height: 180px;
-  top: 18%;
-  left: 10%;
+  /* ...same size and position... */
+  background: radial-gradient(circle at 30% 20%, #ffffff, #87cab4);  /* teal */
 }
 
 .orb-medium {
-  width: 140px;
-  height: 140px;
-  bottom: 12%;
-  right: 15%;
-  background: radial-gradient(circle at 30% 20%, #fdfdfd, #ffcf8a);
-  animation-duration: 16s;
+  /* ...same size and position... */
+  background: radial-gradient(circle at 30% 20%, #ffffff, #cf4d49);  /* coral */
 }
 
 .orb-small {
-  width: 90px;
-  height: 90px;
-  top: 60%;
-  left: 48%;
-  background: radial-gradient(circle at 30% 20%, #fdfdfd, #7bbcff);
-  animation-duration: 18s;
+  /* ...same size and position... */
+  background: radial-gradient(circle at 30% 20%, #ffffff, #6982b5);  /* indigo */
 }
 
 .hero-annotation {

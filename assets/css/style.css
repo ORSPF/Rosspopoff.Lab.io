@@ -286,6 +286,11 @@ body.blur-bg::before {
   text-align: center;
 }
 
+.hero-text p {
+  margin: 0 0 14px;
+  color: var(--text-soft);
+}
+
 .hero-highlight {
   border-left: 3px solid var(--accent);
   padding-left: 12px;

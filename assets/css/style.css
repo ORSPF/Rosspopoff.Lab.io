@@ -54,6 +54,14 @@ body {
 
 background-color: #58595B;
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
 .bg-shape {
   position: fixed;
   border-radius: 999px;

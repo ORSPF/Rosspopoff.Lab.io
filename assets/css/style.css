@@ -6,22 +6,30 @@
 :root {
 
   /* ----- Core background colors ----- */
-  --bg: #05070a;             /* near black base */
-  --bg-alt: #0b0f16;         /* dark blue-grey for panels */
+  --bg: #05070a;
+  /* near black base */
+  --bg-alt: #0b0f16;
+  /* dark blue-grey for panels */
 
   /* ----- Card surfaces ----- */
   --card-bg: rgba(8, 10, 14, 0.96);
   --card-alt-bg: rgba(10, 14, 20, 0.96);
 
   /* ----- Accent palette (derived from your Asset colors) ----- */
-  --accent: #cf4d49;         /* coral red */
-  --accent-soft: #cd85ae;    /* soft mauve */
-  --accent-warm: #87cab4;    /* warm teal */
+  --accent: #cf4d49;
+  /* coral red */
+  --accent-soft: #cd85ae;
+  /* soft mauve */
+  --accent-warm: #cd9ab8;
+  /* warm teal */
 
   /* ----- Text colors ----- */
-  --text: #f7f7f8;           /* main text */
-  --text-soft: #cfd3de;      /* softer text */
-  --muted: #8b92a3;          /* muted UI grey */
+  --text: #f7f7f8;
+  /* main text */
+  --text-soft: #cfd3de;
+  /* softer text */
+  --muted: #8b92a3;
+  /* muted UI grey */
 
   /* ----- Borders, radii, shadows ----- */
   --border-subtle: rgba(255, 255, 255, 0.06);
@@ -50,7 +58,8 @@ html,
 body {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;     /* nice smooth scroll */
+  scroll-behavior: smooth;
+  /* nice smooth scroll */
 }
 
 
@@ -79,24 +88,32 @@ body {
 /* Overlay used for the blur */
 body::before {
   content: "";
-  position: fixed;            /* scrolls independently (desktop only) */
+  position: fixed;
+  /* scrolls independently (desktop only) */
   inset: 0;
 
   background: url("../img/Asset 3.png") top center / cover no-repeat fixed;
 
-  filter: blur(0px);          /* initially sharp */
-  opacity: 0;                 /* invisible at top */
+  filter: blur(0px);
+  /* initially sharp */
+  opacity: 0;
+  /* invisible at top */
   transition: opacity 0.5s ease, filter 0.5s ease;
 
-  pointer-events: none;       /* do not block clicks */
-  z-index: -1;                /* behind all content */
+  pointer-events: none;
+  /* do not block clicks */
+  z-index: -1;
+  /* behind all content */
 }
 
 /* When scrolling, JS adds class="blur-bg" to <body> */
 body.blur-bg::before {
-  opacity: 1;                 /* show overlay */
-  filter: blur(22px);         /* heavy blur */
-  background-color: rgba(0, 0, 0, 0.65); /* darken background */
+  opacity: 1;
+  /* show overlay */
+  filter: blur(22px);
+  /* heavy blur */
+  background-color: rgba(0, 0, 0, 0.65);
+  /* darken background */
 }
 
 
@@ -106,7 +123,8 @@ body.blur-bg::before {
 
 .container {
   width: 100%;
-  max-width: 1120px;          /* main site width */
+  max-width: 1120px;
+  /* main site width */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -117,11 +135,9 @@ body.blur-bg::before {
 
 .section-alt {
   /* opaque-ish background that hides background image */
-  background: linear-gradient(
-    135deg,
-    rgba(27, 12, 28, 0.8),
-    rgba(12, 5, 8, 0.8)
-  );
+  background: linear-gradient(135deg,
+      rgba(27, 12, 28, 0.8),
+      rgba(12, 5, 8, 0.8));
   position: relative;
 }
 
@@ -134,13 +150,12 @@ body.blur-bg::before {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);                 /* frosted navbar */
-  background: linear-gradient(
-    to bottom,
-    rgba(5, 9, 9, 0.96),
-    rgba(5, 9, 9, 0.86),
-    transparent
-  );
+  backdrop-filter: blur(18px);
+  /* frosted navbar */
+  background: linear-gradient(to bottom,
+      rgba(5, 9, 9, 0.96),
+      rgba(5, 9, 9, 0.86),
+      transparent);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
@@ -198,8 +213,8 @@ body.blur-bg::before {
   padding: 6px 8px;
   border-radius: 999px;
   transition: color var(--transition-fast),
-              background var(--transition-fast),
-              transform var(--transition-fast);
+    background var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .main-nav a:hover {
@@ -212,7 +227,8 @@ body.blur-bg::before {
 /* ----- Mobile nav hamburger icon ----- */
 
 .nav-toggle {
-  display: none;            /* only shown below 880px */
+  display: none;
+  /* only shown below 880px */
   width: 32px;
   height: 32px;
   border-radius: 999px;
@@ -240,9 +256,11 @@ body.blur-bg::before {
 
 .hero {
   padding: 72px 0 40px;
-  min-height: 80vh;         /* big top section */
+  min-height: 80vh;
+  /* big top section */
   display: flex;
-  align-items: flex-end;    /* push text downwards */
+  align-items: flex-end;
+  /* push text downwards */
 }
 
 /* Make hero extra-wide */
@@ -261,7 +279,8 @@ body.blur-bg::before {
 
 /* Hero text block */
 .hero-text {
-  max-width: 1400px;        /* wide title */
+  max-width: 1400px;
+  /* wide title */
   margin: 0 auto;
   text-align: center;
 }
@@ -311,15 +330,15 @@ body.blur-bg::before {
   cursor: pointer;
   border: 1px solid transparent;
   transition: background var(--transition-med),
-              color var(--transition-med),
-              transform var(--transition-fast),
-              box-shadow var(--transition-fast);
+    color var(--transition-med),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
 .btn.primary {
   background: linear-gradient(135deg, #9f82bc, #6c236b);
   color: #03120d;
-  box-shadow: 0 15px 30px rgba(217, 172, 208, 0.5);
+  box-shadow: 0 3px 3px rgba(217, 172, 208, 0.5);
 }
 
 .btn.ghost {
@@ -356,8 +375,8 @@ body.blur-bg::before {
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-soft);
   transition: transform var(--transition-fast),
-              box-shadow var(--transition-fast),
-              border-color var(--transition-fast);
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 
@@ -382,12 +401,14 @@ body.blur-bg::before {
 .team-pi {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);  /* photo + text */
+  grid-template-columns: 120px minmax(0, 1fr);
+  /* photo + text */
   gap: 20px;
 }
 
 .pi-photo {
-  width: 120px;           /* adjust PI image size */
+  width: 120px;
+  /* adjust PI image size */
   height: auto;
   border-radius: 50%;
   object-fit: cover;
@@ -433,10 +454,97 @@ body.blur-bg::before {
    CONTACT SECTION
 ================================================================ */
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+/* Cards inside contact grid */
+.contact-card {
+  border-radius: var(--radius-lg);
+  padding: 20px 18px;
+  background: rgba(6, 16, 16, 0.95);
+  border: 1px solid var(--border-subtle);
+  font-size: 14px;
+}
+
+/* Notes under email/location */
+.contact-note {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- SOCIAL BUTTONS CONTAINER ---------- */
+.social-buttons {
+  display: flex;
+  flex-direction: column;
+  /* stack vertically */
+  gap: 14px;
+  margin-top: 14px;
+}
+
+/* ---------- BASE BUTTON STYLE ---------- */
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* space between icon and text */
+  padding: 10px 16px;
+  border-radius: 999px;
+  /* pill shape */
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+/* ---------- ICON IMAGES ---------- */
+.social-icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ---------- PLATFORM COLORS ---------- */
+
+/* Twitter / X */
+.social-twitter {
+  background: rgba(29, 161, 242, 0.12);
+  color: #1da1f2;
+  border-color: rgba(29, 161, 242, 0.25);
+}
+
+.social-twitter:hover {
+  background: rgba(29, 161, 242, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(29, 161, 242, 0.25);
+}
+
+/* Bluesky */
+.social-bluesky {
+  background: rgba(0, 133, 255, 0.12);
+  color: #0085ff;
+  border-color: rgba(0, 133, 255, 0.25);
+}
+
+.social-bluesky:hover {
+  background: rgba(0, 133, 255, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 133, 255, 0.25);
+}
+
+/* LinkedIn */
+.social-linkedin {
+  background: rgba(40, 103, 178, 0.12);
+  color: #2867b2;
+  border-color: rgba(40, 103, 178, 0.25);
+}
+
+.social-linkedin:hover {
+  background: rgba(40, 103, 178, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(40, 103, 178, 0.25);
 }
 
 
@@ -475,39 +583,49 @@ body.blur-bg::before {
 
 @media (max-width: 880px) {
 
-  /* Simplify background for mobile */
+  /* Background on tablets/phones
+     - keep Asset 3 visible
+     - no crazy fixed/blur issues
+  */
   body {
-    background: #000;
+    background: #000000;
   }
 
-  /* Light version of background image */
   body::before {
-    position: absolute;               /* avoid iOS fixed issues */
+    position: fixed;  /* ok on modern phones */
     inset: 0;
-    background: url("../img/Asset 3.png") center top / contain no-repeat;
-    filter: blur(0);
-    opacity: 0.4;
+    background: url("../img/Asset 3.png") center top / cover no-repeat;
+    opacity: 0.85;    /* very visible on front page */
+    filter: none;     /* sharp at top */
   }
 
   body.blur-bg::before {
-    filter: blur(3px);
-    opacity: 0.5;
+    filter: blur(8px); /* lighter blur than desktop */
+    opacity: 0.9;
   }
 
-  /* Hero adjustments */
+  /* Hero layout on smaller screens */
   .hero {
-    min-height: 70vh;
+    min-height: 80vh;
+    padding-top: 72px;
+    padding-bottom: 24px;
+    align-items: center;
   }
 
   .hero-inner {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 8vh;
+    padding-bottom: 0;
     text-align: center;
   }
 
-  /* Stack team section */
+  .hero-text h1 {
+    font-size: 30px;
+  }
+
+  /* Team - stack everything vertically */
   .team-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -516,7 +634,25 @@ body.blur-bg::before {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* Mobile nav menu */
+  /* Contact cards - slightly tighter padding */
+  .contact-card {
+    padding: 16px 14px;
+  }
+
+  /* Social buttons - full width feel, easy to tap */
+  .social-buttons {
+    align-items: stretch;
+  }
+
+  .social-btn {
+    justify-content: flex-start;
+  }
+
+  /* Mobile navigation menu */
+  .site-header {
+    backdrop-filter: blur(14px);
+  }
+
   .main-nav {
     position: absolute;
     inset: 56px 16px auto 16px;
@@ -524,7 +660,7 @@ body.blur-bg::before {
     border-radius: var(--radius-lg);
     background: rgba(5, 11, 11, 0.98);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-    display: none;              /* visible when .open class is added */
+    display: none;
     flex-direction: column;
     gap: 8px;
   }
@@ -542,16 +678,28 @@ body.blur-bg::before {
 /* ----- Phones (max-width: 600px) ----- */
 
 @media (max-width: 600px) {
+
   .hero {
     padding-top: 68px;
     padding-bottom: 20px;
+    min-height: 70vh;
   }
 
   .hero-text h1 {
-    font-size: 28px;
+    font-size: 26px;
   }
 
   .section {
     padding: 60px 0;
+  }
+
+  /* Slightly smaller social buttons on very small phones */
+  .social-buttons {
+    gap: 12px;
+  }
+
+  .social-btn {
+    font-size: 13px;
+    padding: 9px 14px;
   }
 }

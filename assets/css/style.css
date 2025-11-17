@@ -276,7 +276,7 @@ body.blur-bg::before {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 2vh;
+  padding-bottom: 0vh;
 }
 
 /* Hero text block */

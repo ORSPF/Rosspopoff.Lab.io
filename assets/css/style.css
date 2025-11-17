@@ -1,64 +1,74 @@
-/* -----------------------------------------
-   Global design tokens and theme variables
-   ----------------------------------------- */
-:root {
-  /* Base background colors */
-  --bg: #05070a;             /* near black base */
-  --bg-alt: #0b0f16;         /* dark grey blue for panels */
+/* ================================================================
+   GLOBAL THEME
+   Design tokens for colors, spacing, radii, shadows, transitions
+================================================================ */
 
-  /* Card backgrounds */
+:root {
+
+  /* ----- Core background colors ----- */
+  --bg: #05070a;             /* near black base */
+  --bg-alt: #0b0f16;         /* dark blue-grey for panels */
+
+  /* ----- Card surfaces ----- */
   --card-bg: rgba(8, 10, 14, 0.96);
   --card-alt-bg: rgba(10, 14, 20, 0.96);
 
-  /* Accent palette derived from your figure */
-  --accent: #cf4d49;         /* main coral red accent */
-  --accent-soft: #cd85ae;    /* mauve secondary accent */
-  --accent-warm: #87cab4;    /* teal accent for highlights */
+  /* ----- Accent palette (derived from your Asset colors) ----- */
+  --accent: #cf4d49;         /* coral red */
+  --accent-soft: #cd85ae;    /* soft mauve */
+  --accent-warm: #87cab4;    /* warm teal */
 
-  /* Text colors */
-  --text: #f7f7f8;           /* main text (off white) */
-  --text-soft: #cfd3de;      /* softer text for secondary info */
-  --muted: #8b92a3;          /* muted grey blue for subtle text */
+  /* ----- Text colors ----- */
+  --text: #f7f7f8;           /* main text */
+  --text-soft: #cfd3de;      /* softer text */
+  --muted: #8b92a3;          /* muted UI grey */
 
-  /* Borders, radii, shadows */
+  /* ----- Borders, radii, shadows ----- */
   --border-subtle: rgba(255, 255, 255, 0.06);
   --radius-lg: 20px;
   --radius-xl: 32px;
   --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
 
-  /* Animation timing */
+  /* ----- Animation speeds ----- */
   --transition-fast: 0.22s ease;
   --transition-med: 0.35s ease;
 }
 
 
-/* -----------------------------------------
-   Reset and base behavior
-   ----------------------------------------- */
+/* ================================================================
+   RESET / BASE
+   Ensure consistent browser behavior
+================================================================ */
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;    /* make sizing predictable */
+  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;   /* smooth scroll for anchor links */
+  scroll-behavior: smooth;     /* nice smooth scroll */
 }
 
-/* -----------------------------------------
-   Page background and scroll blur effect
-   ----------------------------------------- */
+
+/* ================================================================
+   BACKGROUND + SCROLL-BLUR EFFECT (Desktop)
+   The background image is applied twice:
+   1) body: sharp version
+   2) body::before: blurred version that fades in on scroll
+================================================================ */
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* background image - correct relative path from assets/css/ to assets/img/ */
+  /* Image path relative to assets/css/ */
   background: url("../img/Asset 3.png") top center / cover no-repeat fixed;
-  background-color: #000000;
+
+  /* Fallback for very small screens or slow browsers */
+  background-color: #000;
 
   color: var(--text);
   line-height: 1.6;
@@ -66,35 +76,37 @@ body {
   min-height: 100vh;
 }
 
+/* Overlay used for the blur */
 body::before {
   content: "";
-  position: fixed;
+  position: fixed;            /* scrolls independently (desktop only) */
   inset: 0;
 
-  /* same image for the blur overlay */
   background: url("../img/Asset 3.png") top center / cover no-repeat fixed;
-  filter: blur(0px);
-  opacity: 0;
-  transition: opacity 0.1s ease, filter 0.1s ease;
-  pointer-events: none;
-  z-index: -1;
+
+  filter: blur(0px);          /* initially sharp */
+  opacity: 0;                 /* invisible at top */
+  transition: opacity 0.5s ease, filter 0.5s ease;
+
+  pointer-events: none;       /* do not block clicks */
+  z-index: -1;                /* behind all content */
 }
 
-/* blur when scrolling */
-
+/* When scrolling, JS adds class="blur-bg" to <body> */
 body.blur-bg::before {
-  opacity: 1;
-  filter: blur(22px);                /* increase blur */
-  background-color: rgba(0, 0, 0, 0.65); /* darken while scrolling */
+  opacity: 1;                 /* show overlay */
+  filter: blur(22px);         /* heavy blur */
+  background-color: rgba(0, 0, 0, 0.65); /* darken background */
 }
 
-/* -----------------------------------------
-   Layout helpers
-   ----------------------------------------- */
+
+/* ================================================================
+   LAYOUT HELPERS
+================================================================ */
 
 .container {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1120px;          /* main site width */
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -103,9 +115,8 @@ body.blur-bg::before {
   padding: 80px 0;
 }
 
-/* Sections using .section-alt will have their own
-   opaque background layered above the page background image */
 .section-alt {
+  /* opaque-ish background that hides background image */
   background: linear-gradient(
     135deg,
     rgba(27, 12, 28, 0.8),
@@ -114,14 +125,22 @@ body.blur-bg::before {
   position: relative;
 }
 
-/* Header */
+
+/* ================================================================
+   HEADER + LOGO + NAVIGATION
+================================================================ */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);
-  background: linear-gradient(to bottom, rgba(5, 9, 9, 0.96), rgba(5, 9, 9, 0.86), transparent);
+  backdrop-filter: blur(18px);                 /* frosted navbar */
+  background: linear-gradient(
+    to bottom,
+    rgba(5, 9, 9, 0.96),
+    rgba(5, 9, 9, 0.86),
+    transparent
+  );
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
 }
 
@@ -132,18 +151,21 @@ body.blur-bg::before {
   padding: 14px 0;
 }
 
+/* Logo + text block */
 .logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* Your lab icon */
 .logo-img {
-  height: auto;    /* adjust size here */
-  width: 5px;
+  height: 32px;
+  width: auto;
   object-fit: contain;
 }
 
+/* Lab name & subtitle */
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -160,7 +182,8 @@ body.blur-bg::before {
   color: var(--muted);
 }
 
-/* Navigation */
+
+/* ----- Navigation links ----- */
 
 .main-nav {
   display: flex;
@@ -174,17 +197,9 @@ body.blur-bg::before {
   color: var(--text-soft);
   padding: 6px 8px;
   border-radius: 999px;
-  position: relative;
-  transition: color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
-}
-
-.main-nav a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  border: 1px solid transparent;
-  transition: border-color var(--transition-fast);
+  transition: color var(--transition-fast),
+              background var(--transition-fast),
+              transform var(--transition-fast);
 }
 
 .main-nav a:hover {
@@ -193,14 +208,11 @@ body.blur-bg::before {
   transform: translateY(-1px);
 }
 
-.main-nav a:hover::after {
-  border-color: rgba(216, 206, 230, 0.3);
-}
 
-/* Mobile nav toggle */
+/* ----- Mobile nav hamburger icon ----- */
 
 .nav-toggle {
-  display: none;
+  display: none;            /* only shown below 880px */
   width: 32px;
   height: 32px;
   border-radius: 999px;
@@ -210,12 +222,10 @@ body.blur-bg::before {
   justify-content: center;
   flex-direction: column;
   gap: 4px;
-  padding: 5px;
   cursor: pointer;
 }
 
 .nav-toggle span {
-  display: block;
   width: 16px;
   height: 2px;
   background: var(--text);
@@ -223,35 +233,25 @@ body.blur-bg::before {
   transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
-.nav-toggle.open span:nth-child(1) {
-  transform: translateY(3px) rotate(45deg);
-}
 
-.nav-toggle.open span:nth-child(2) {
-  opacity: 0;
-}
+/* ================================================================
+   HERO SECTION
+================================================================ */
 
-.nav-toggle.open span:nth-child(3) {
-  transform: translateY(-3px) rotate(-45deg);
-}
-
-/* ===== HERO SECTION ===== */
-
-/* Hero section container */
 .hero {
   padding: 72px 0 40px;
-  min-height: 80vh;
+  min-height: 80vh;         /* big top section */
   display: flex;
-  align-items: flex-end;
+  align-items: flex-end;    /* push text downwards */
 }
 
-/* Make the hero container wider than standard sections */
+/* Make hero extra-wide */
 .hero .container {
-  max-width: 1400px; /* <-- change to 1600px or 100% if needed */
+  max-width: 1400px;
   width: 100%;
 }
 
-/* Hero inner layout */
+/* Hero inner alignment */
 .hero-inner {
   width: 100%;
   display: flex;
@@ -261,16 +261,25 @@ body.blur-bg::before {
 
 /* Hero text block */
 .hero-text {
-  max-width: 1400px;
+  max-width: 1400px;        /* wide title */
   margin: 0 auto;
   text-align: center;
 }
 
+/* Hero title */
+.hero-text h1 {
+  font-size: 36px;
+  line-height: 1.15;
+  margin: 0 0 18px;
+}
+
+/* Hero paragraphs */
 .hero-text p {
   margin: 0 0 14px;
   color: var(--text-soft);
 }
 
+/* Left-accent line for highlight text */
 .hero-highlight {
   border-left: 3px solid var(--accent);
   padding-left: 12px;
@@ -278,14 +287,18 @@ body.blur-bg::before {
   font-size: 15px;
 }
 
+/* Hero buttons aligned center */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
-  justify-content: center;   /* center horizontally */
-  text-align: center;        /* center if they wrap to two lines */
+  justify-content: center;
+  text-align: center;
 }
+
+
+/* ----- Hero buttons ----- */
 
 .btn {
   display: inline-flex;
@@ -297,18 +310,16 @@ body.blur-bg::before {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: background var(--transition-med), color var(--transition-med), transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background var(--transition-med),
+              color var(--transition-med),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast);
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, #9F82BC, #6C236B);
+  background: linear-gradient(135deg, #9f82bc, #6c236b);
   color: #03120d;
-  box-shadow: 0 15px 30px rgba(217, 172, 208,0.5);
-}
-
-.btn.primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 38px rgba(217, 172, 208,0.6);
+  box-shadow: 0 15px 30px rgba(217, 172, 208, 0.5);
 }
 
 .btn.ghost {
@@ -317,48 +328,20 @@ body.blur-bg::before {
   border-color: rgba(216, 206, 230, 0.4);
 }
 
-.btn.ghost:hover {
-  background: rgba(216, 206, 230, 0.08);
-}
 
-.lab-logo-hero {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.4));
-  opacity: 0.95;
-}
-
-.hero-annotation {
-  position: absolute;
-  bottom: 16px;
-  left: 18px;
-  font-size: 12px;
-  color: var(--text-soft);
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(2, 9, 9, 0.8);
-  border: 1px solid rgba(209, 198, 225, 0.45);
-}
-
-/* Sections */
+/* ================================================================
+   SECTION HEADERS
+================================================================ */
 
 .section-header {
   max-width: 640px;
   margin-bottom: 36px;
 }
 
-.section-header h2 {
-  font-size: 24px;
-  margin: 0 0 12px;
-}
 
-.section-header p {
-  margin: 0;
-  color: var(--text-soft);
-}
-
-/* Research */
+/* ================================================================
+   RESEARCH SECTION
+================================================================ */
 
 .research-grid {
   display: grid;
@@ -371,53 +354,16 @@ body.blur-bg::before {
   background: var(--card-bg);
   padding: 20px 18px;
   border: 1px solid var(--border-subtle);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-fast),
+              box-shadow var(--transition-fast),
+              border-color var(--transition-fast);
 }
 
-.research-card::before {
-  content: "";
-  position: absolute;
-  inset: -40%;
-  background: radial-gradient(circle at 0 0, rgba(222, 215, 234, 0.12), transparent 55%);
-  opacity: 0;
-  transition: opacity var(--transition-med);
-}
 
-.research-card h3 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
-
-.research-card p {
-  margin: 0;
-  color: var(--text-soft);
-  font-size: 14px;
-}
-
-.research-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
-  border-color: rgba(216, 206, 230, 0.3);
-}
-
-.research-card:hover::before {
-  opacity: 1;
-}
-
-.research-callout {
-  margin-top: 28px;
-  border-radius: var(--radius-lg);
-  padding: 16px 18px;
-  font-size: 14px;
-  color: var(--accent-soft);
-  background: linear-gradient(135deg, rgba(216, 206, 230, 0.12), rgba(7, 26, 21, 0.9));
-  border: 1px solid rgba(159, 130, 188, 0.65);
-}
-
-/* Team */
+/* ================================================================
+   TEAM SECTION
+================================================================ */
 
 .team-grid {
   display: grid;
@@ -436,86 +382,22 @@ body.blur-bg::before {
 .team-pi {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
+  grid-template-columns: 120px minmax(0, 1fr);  /* photo + text */
   gap: 20px;
-  align-items: flex-start;
-}
-
-.team-photo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.photo-placeholder {
-  width: 110px;
-  height: 110px;
-  border-radius: 999px;
-  border: 1px dashed rgba(255, 255, 255, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: var(--muted);
-  background: radial-gradient(circle at 30% 20%, rgba(222, 215, 234, 0.26), rgba(0, 0, 0, 0.9));
-}
-
-.team-info h3 {
-  margin: 0 0 6px;
-}
-
-.team-role {
-  margin: 0 0 10px;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent-soft);
-}
-
-.team-info p {
-  margin: 0 0 10px;
-  font-size: 14px;
-  color: var(--text-soft);
 }
 
 .pi-photo {
-  width: 120px;            /* adjust size here */
+  width: 120px;           /* adjust PI image size */
   height: auto;
-  border-radius: 50%;   /* rounded corners; use 50% for a circle */
+  border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
 }
 
 
-/* Publications */
-
-.pub-filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 22px;
-}
-
-.filter-btn {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 6px 13px;
-  background: rgba(5, 10, 10, 0.7);
-  color: var(--text-soft);
-  font-size: 13px;
-  cursor: pointer;
-  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
-}
-
-.filter-btn.active {
-  background: rgba(216, 206, 230, 0.16);
-  border-color: rgba(216, 206, 230, 0.65);
-  color: var(--accent-soft);
-}
-
-.filter-btn:hover {
-  transform: translateY(-1px);
-}
+/* ================================================================
+   PUBLICATIONS
+================================================================ */
 
 .pub-list {
   display: flex;
@@ -523,93 +405,22 @@ body.blur-bg::before {
   gap: 22px;
 }
 
-.pub-item {
-  padding: 4px 0;
-  background: transparent;
-  border: none;
-  font-size: 14px;
-}
 
-.pub-item h3 {
-  margin: 0 0 8px;
-  font-size: 15px;
-}
-
-.pub-authors {
-  margin: 0 0 5px;
-  color: var(--muted);
-}
-
-.pub-journal {
-  margin: 0;
-  color: var(--accent-soft);
-  font-size: 13px;
-}
-
-.pub-item:hover {
-  border-color: rgba(216, 206, 230, 0.45);
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
-}
-
-.pub-link {
-  font-size: 13px;
-  margin-left: 8px;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-.pub-link:hover {
-  text-decoration: underline;
-  color: var(--accent-soft);
-}
-
-/* News */
+/* ================================================================
+   NEWS
+================================================================ */
 
 .news-timeline {
-  position: relative;
   padding-left: 16px;
   border-left: 1px solid rgba(255, 255, 255, 0.12);
   display: grid;
   gap: 20px;
 }
 
-.news-item {
-  position: relative;
-  padding-left: 10px;
-}
 
-.news-item::before {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 2px solid var(--accent-soft);
-  background: var(--bg-alt);
-  left: -21px;
-  top: 5px;
-}
-
-.news-date {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
-.news-item h3 {
-  margin: 4px 0 6px;
-  font-size: 16px;
-}
-
-.news-item p {
-  margin: 0;
-  font-size: 14px;
-  color: var(--text-soft);
-}
-
-/* Join */
+/* ================================================================
+   JOIN SECTION
+================================================================ */
 
 .join-grid {
   display: grid;
@@ -617,34 +428,10 @@ body.blur-bg::before {
   gap: 22px;
 }
 
-.join-card {
-  border-radius: var(--radius-lg);
-  padding: 20px 18px;
-  background: var(--card-bg);
-  border: 1px solid var(--border-subtle);
-  font-size: 14px;
-  color: var(--text-soft);
-}
 
-.join-card h3 {
-  margin: 0 0 10px;
-  font-size: 17px;
-}
-
-.join-cta {
-  margin-top: 26px;
-  padding: 15px 18px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(216, 206, 230, 0.12), rgba(5, 13, 11, 0.95));
-  border: 1px solid rgba(216, 206, 230, 0.55);
-  font-size: 14px;
-}
-
-.join-cta a {
-  color: var(--accent-soft);
-}
-
-/* Contact */
+/* ================================================================
+   CONTACT SECTION
+================================================================ */
 
 .contact-grid {
   display: grid;
@@ -652,25 +439,10 @@ body.blur-bg::before {
   gap: 20px;
 }
 
-.contact-card {
-  border-radius: var(--radius-lg);
-  padding: 20px 18px;
-  background: rgba(6, 16, 16, 0.95);
-  border: 1px solid var(--border-subtle);
-  font-size: 14px;
-}
 
-.contact-card h3 {
-  margin: 0 0 10px;
-  font-size: 17px;
-}
-
-.contact-note {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-/* Footer */
+/* ================================================================
+   FOOTER
+================================================================ */
 
 .site-footer {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -678,20 +450,10 @@ body.blur-bg::before {
   background: rgba(3, 6, 6, 0.96);
 }
 
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  font-size: 12px;
-  color: var(--muted);
-}
 
-.footer-small {
-  font-size: 11px;
-}
-
-/* Reveal on scroll */
+/* ================================================================
+   SCROLL REVEAL ANIMATIONS
+================================================================ */
 
 .reveal {
   opacity: 0;
@@ -704,28 +466,48 @@ body.blur-bg::before {
   transform: translateY(0);
 }
 
-/* Animations */
 
-@keyframes float {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(20px, -24px, 0);
-  }
-}
+/* ================================================================
+   RESPONSIVE (Mobile & Tablet)
+================================================================ */
 
-/* Responsive */
+/* ----- Tablet & small laptops (max-width: 880px) ----- */
 
 @media (max-width: 880px) {
 
+  /* Simplify background for mobile */
+  body {
+    background: #000;
+  }
+
+  /* Light version of background image */
+  body::before {
+    position: absolute;               /* avoid iOS fixed issues */
+    inset: 0;
+    background: url("../img/Asset 3.png") center top / contain no-repeat;
+    filter: blur(0);
+    opacity: 0.4;
+  }
+
+  body.blur-bg::before {
+    filter: blur(3px);
+    opacity: 0.5;
+  }
+
+  /* Hero adjustments */
+  .hero {
+    min-height: 70vh;
+  }
+
   .hero-inner {
-    display: flex !important;
+    display: flex;
     justify-content: center;
-   align-items: center;
+    align-items: center;
     padding-bottom: 8vh;
     text-align: center;
   }
+
+  /* Stack team section */
   .team-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -734,10 +516,7 @@ body.blur-bg::before {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .site-header {
-    backdrop-filter: blur(14px);
-  }
-
+  /* Mobile nav menu */
   .main-nav {
     position: absolute;
     inset: 56px 16px auto 16px;
@@ -745,7 +524,7 @@ body.blur-bg::before {
     border-radius: var(--radius-lg);
     background: rgba(5, 11, 11, 0.98);
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
-    display: none;
+    display: none;              /* visible when .open class is added */
     flex-direction: column;
     gap: 8px;
   }
@@ -759,17 +538,20 @@ body.blur-bg::before {
   }
 }
 
+
+/* ----- Phones (max-width: 600px) ----- */
+
 @media (max-width: 600px) {
   .hero {
     padding-top: 68px;
-  }
-
-  .section {
-    padding: 60px 0;
+    padding-bottom: 20px;
   }
 
   .hero-text h1 {
     font-size: 28px;
   }
-}
 
+  .section {
+    padding: 60px 0;
+  }
+}

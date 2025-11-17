@@ -303,6 +303,8 @@ body.blur-bg::before {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 20px;
+  justify-content: center;   /* center horizontally */
+  text-align: center;        /* center if they wrap to two lines */
 }
 
 .btn {

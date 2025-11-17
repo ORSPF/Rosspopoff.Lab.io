@@ -422,11 +422,11 @@ body.blur-bg::before {
 
 /* Publication list spacing */
 .pub-list {
-  gap: 12px;           /* was 22px */
+  gap: 8px;           /* was 22px */
 }
 
 .pub-item {
-  padding: 2px 0;      /* tighter spacing */
+  padding: 1px 0;      /* tighter spacing */
 }
 
 /* Authors: darker shade */

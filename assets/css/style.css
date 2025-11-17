@@ -255,42 +255,35 @@ body.blur-bg::before {
   transform: translateY(-3px) rotate(-45deg);
 }
 
-/* Hero */
+/* ===== HERO SECTION ===== */
 
-/* Hero section: big block with text centered horizontally,
-   placed toward the bottom of the viewport */
+/* Hero section container */
 .hero {
-  /* Top + bottom padding, but height driven mainly by min-height */
   padding: 72px 0 40px;
-
-  /* Make the hero fill most of the screen */
   min-height: 90vh;
-
-  /* Use flex so we can push content to the bottom */
   display: flex;
-  align-items: flex-end;   /* vertical: push inner content down */
+  align-items: flex-end;
 }
 
-/* Inner container that centers the text horizontally */
+/* Make the hero container wider than standard sections */
+.hero .container {
+  max-width: 1400px; /* <-- change to 1600px or 100% if needed */
+  width: 100%;
+}
+
+/* Hero inner layout */
 .hero-inner {
   width: 100%;
   display: flex;
-  justify-content: center; /* horizontal: center the hero-text */
-  padding-bottom: 10vh;    /* distance from absolute bottom */
+  justify-content: center;
+  padding-bottom: 10vh;
 }
 
-/* Hero text block itself */
-
+/* Hero text block */
 .hero-text {
-  max-width: 1400px;        /* readable line length */
-  text-align: center;      /* center title and paragraphs */
+  max-width: 1400px;
   margin: 0 auto;
-}
-
-
-.hero-text p {
-  margin: 0 0 14px;
-  color: var(--text-soft);
+  text-align: center;
 }
 
 .hero-highlight {

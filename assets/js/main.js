@@ -69,3 +69,12 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
+// Blur background on scroll
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  if (scrollY > 80) {
+    document.body.classList.add("blur-bg");
+  } else {
+    document.body.classList.remove("blur-bg");
+  }
+});

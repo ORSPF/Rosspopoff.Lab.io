@@ -260,7 +260,7 @@ body.blur-bg::before {
 /* Hero section container */
 .hero {
   padding: 72px 0 40px;
-  min-height: 90vh;
+  min-height: 80vh;
   display: flex;
   align-items: flex-end;
 }
@@ -276,7 +276,7 @@ body.blur-bg::before {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-bottom: 10vh;
+  padding-bottom: 2vh;
 }
 
 /* Hero text block */

@@ -31,6 +31,7 @@
   --transition-med: 0.35s ease;
 }
 
+
 /* -----------------------------------------
    Reset and base behavior
    ----------------------------------------- */
@@ -261,16 +262,18 @@ body.blur-bg::before {
 }
 
 .hero-inner {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(260px, 2fr);
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-end; /* pushes content toward bottom */
+  text-align: center;        /* center all text */
+  min-height: 80vh;          /* hero takes tall space */
+  padding-bottom: 60px;      /* spacing above bottom */
 }
 
-.hero-text h1 {
-  font-size: 36px;
-  line-height: 1.15;
-  margin: 0 0 18px;
+.hero-text {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .hero-text p {
@@ -324,17 +327,6 @@ body.blur-bg::before {
 
 .btn.ghost:hover {
   background: rgba(216, 206, 230, 0.08);
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 260px;
-  border-radius: var(--radius-xl);
-  background: radial-gradient(circle at 20% 0%, rgba(222, 215, 234, 0.18), transparent 60%),
-              radial-gradient(circle at 80% 100%, rgba(247, 215, 160, 0.25), transparent 70%),
-              linear-gradient(145deg, rgba(6, 18, 16, 0.98), rgba(2, 7, 8, 0.98));
-  overflow: hidden;
-  box-shadow: var(--shadow-soft);
 }
 
 .lab-logo-hero {

@@ -139,8 +139,8 @@ body.blur-bg::before {
 }
 
 .logo-img {
-  height: 5px;    /* adjust size here */
-  width: auto;
+  height: auto;    /* adjust size here */
+  width: 5px;
   object-fit: contain;
 }
 
@@ -151,7 +151,7 @@ body.blur-bg::before {
 }
 
 .logo-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 650;
 }
 

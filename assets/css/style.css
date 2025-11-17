@@ -282,7 +282,7 @@ body.blur-bg::before {
 /* Hero text block itself */
 
 .hero-text {
-  max-width: 800px;        /* readable line length */
+  max-width: 1400px;        /* readable line length */
   text-align: center;      /* center title and paragraphs */
   margin: 0 auto;
 }

@@ -138,18 +138,10 @@ body.blur-bg::before {
   gap: 10px;
 }
 
-.logo-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  background: radial-gradient(circle at 30% 30%, #8af0c7, #2aa979);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #021410;
-  font-size: 14px;
-  font-weight: 700;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+.logo-img {
+  height: 38px;    /* adjust size here */
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {

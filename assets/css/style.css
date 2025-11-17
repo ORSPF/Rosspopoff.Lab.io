@@ -257,24 +257,36 @@ body.blur-bg::before {
 
 /* Hero */
 
+/* Hero section: big block with text centered horizontally,
+   placed toward the bottom of the viewport */
 .hero {
-  padding: 72px 0 60px;
+  /* Top + bottom padding, but height driven mainly by min-height */
+  padding: 72px 0 40px;
+
+  /* Make the hero fill most of the screen */
+  min-height: 90vh;
+
+  /* Use flex so we can push content to the bottom */
+  display: flex;
+  align-items: flex-end;   /* vertical: push inner content down */
 }
 
+/* Inner container that centers the text horizontally */
 .hero-inner {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end; /* pushes content toward bottom */
-  text-align: center;        /* center all text */
-  min-height: 80vh;          /* hero takes tall space */
-  padding-bottom: 60px;      /* spacing above bottom */
+  justify-content: center; /* horizontal: center the hero-text */
+  padding-bottom: 10vh;    /* distance from absolute bottom */
 }
+
+/* Hero text block itself */
 
 .hero-text {
-  max-width: 600px;
+  max-width: 800px;        /* readable line length */
+  text-align: center;      /* center title and paragraphs */
   margin: 0 auto;
 }
+
 
 .hero-text p {
   margin: 0 0 14px;
@@ -726,14 +738,14 @@ body.blur-bg::before {
 /* Responsive */
 
 @media (max-width: 880px) {
+
   .hero-inner {
-    grid-template-columns: minmax(0, 1fr);
+    display: flex !important;
+    justify-content: center;
+   align-items: center;
+    padding-bottom: 8vh;
+    text-align: center;
   }
-
-  .hero-visual {
-    order: -1;
-  }
-
   .team-grid {
     grid-template-columns: minmax(0, 1fr);
   }

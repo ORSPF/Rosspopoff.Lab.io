@@ -457,6 +457,15 @@ body::before {
   color: var(--text-soft);
 }
 
+.pi-photo {
+  width: 180px;            /* adjust size here */
+  height: auto;
+  border-radius: 12px;     /* rounded corners; use 50% for a circle */
+  object-fit: cover;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+}
+
+
 /* Publications */
 
 .pub-filters {

@@ -139,7 +139,7 @@ body.blur-bg::before {
 }
 
 .logo-img {
-  height: 2px;    /* adjust size here */
+  height: 5px;    /* adjust size here */
   width: auto;
   object-fit: contain;
 }
@@ -479,9 +479,9 @@ body.blur-bg::before {
 }
 
 .pi-photo {
-  width: 180px;            /* adjust size here */
+  width: 120px;            /* adjust size here */
   height: auto;
-  border-radius: 12px;     /* rounded corners; use 50% for a circle */
+  border-radius: 50%;   /* rounded corners; use 50% for a circle */
   object-fit: cover;
   box-shadow: 0 12px 28px rgba(0,0,0,0.35);
 }

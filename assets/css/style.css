@@ -136,7 +136,7 @@ body.blur-bg::before {
 .section-alt {
   /* opaque-ish background that hides background image */
   background: linear-gradient(135deg,
-      rgba(27, 12, 28, 0.8),
+      rgba(91, 42, 95, 0.8),
       rgba(12, 5, 8, 0.8));
   position: relative;
 }

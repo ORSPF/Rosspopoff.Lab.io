@@ -594,7 +594,7 @@ body.blur-bg::before {
   body::before {
     position: fixed;  /* ok on modern phones */
     inset: 0;
-    background: url("../img/Asset 3.png") center top / cover no-repeat;
+    background: url("../img/Asset 3.png") center top / 200% auto no-repeat;
     opacity: 0.85;    /* very visible on front page */
     filter: none;     /* sharp at top */
   }

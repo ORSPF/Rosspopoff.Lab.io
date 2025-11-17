@@ -52,52 +52,52 @@ body {
    Page background and scroll blur effect
    ----------------------------------------- */
 
-/* Main document styles */
+/* Base document settings */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-  /* Base background is your Asset 3 image */
-  background: url("assets/img/Asset 3.png") top center / cover no-repeat fixed;
-
-  /* Fallback solid color behind the image */
+  /* Solid dark base color behind everything */
   background-color: #000000;
 
+  /* Text and layout */
   color: var(--text);
   line-height: 1.6;
   position: relative;
   min-height: 100vh;
 }
 
-/* Overlay layer that will become blurred when scrolling
-   It uses the same image as the body background */
+/* Overlay that shows Asset 3 as a big, centered image.
+   At the top of the page this is sharp.
+   We will blur it only when the user scrolls. */
 body::before {
   content: "";
   position: fixed;
-  inset: 0;  /* top: 0; right: 0; bottom: 0; left: 0 */
+  inset: 0;  /* top:0; right:0; bottom:0; left:0 */
 
-  /* Same image again for the overlay */
-  background: url("assets/img/Asset 3.png") top center / cover no-repeat fixed;
+  /* Use Asset 3 as a centered illustration, not stretched to cover.
+     - "contain" keeps the image crisp and avoids stretching a small PNG.
+     - "no-repeat" shows it only once.
+     - background-color keeps the rest of the screen dark. */
+  background:
+    #000000
+    url("assets/img/Asset 3.png") center top / contain no-repeat fixed;
 
-  /* Start with no blur and invisible */
+  /* Start sharp and invisible */
   filter: blur(0px);
-  opacity: 0;
-
-  /* Smooth transition when we toggle the blur */
+  opacity: 1;              /* image is visible at top */
   transition: opacity 0.5s ease, filter 0.5s ease;
-
-  /* Do not block clicks or scrolling */
   pointer-events: none;
-
-  /* Place overlay behind content but above the base background */
-  z-index: -1;
+  z-index: -1;             /* behind the content */
 }
 
-/* When the body gets the "blur-bg" class (via JS on scroll),
-   the overlay becomes visible and blurred */
+/* When scrolled down (JS adds .blur-bg on <body>),
+   we slightly blur and dim the background image.
+   Blur is small to avoid extreme fuzziness. */
 body.blur-bg::before {
-  opacity: 1;
-  filter: blur(12px);
+  filter: blur(4px);       /* lighter blur than before (was 12px) */
+  opacity: 0.65;           /* slightly dimmer so content stands out */
 }
+
 
 /* -----------------------------------------
    Layout helpers

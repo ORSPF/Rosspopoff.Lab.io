@@ -163,7 +163,7 @@ body.blur-bg::before {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 0;
+  padding: 20px 0;
 }
 
 /* Logo + text block */

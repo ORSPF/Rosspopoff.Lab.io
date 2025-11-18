@@ -175,7 +175,7 @@ body.blur-bg::before {
 
 /* Your lab icon */
 .logo-img {
-  height: 32px;
+  height: 40px;
   width: auto;
   object-fit: contain;
 }

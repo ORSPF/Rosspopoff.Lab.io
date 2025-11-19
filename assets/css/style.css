@@ -379,6 +379,21 @@ body.blur-bg::before {
     border-color var(--transition-fast);
 }
 
+.research-img {
+  width: 100%;
+  height: 160px;                /* adjust height here */
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  overflow: hidden;             /* ensure clean crop */
+  margin-bottom: 14px;          /* spacing before title */
+}
+
+/* Make image fill the square perfectly */
+.research-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* fills the square */
+  display: block;
+}
 
 /* ================================================================
    TEAM SECTION

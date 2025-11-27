@@ -625,32 +625,59 @@ body.blur-bg::before {
 
 @media (max-width: 880px) {
 
-  /* Background on tablets/phones
+  /* --------------------------------------------------------
+     Background on tablets/phones 
      - keep Asset 3 visible
-     - no crazy fixed/blur issues
-  */
+     - avoid iOS fixed/blur issues
+  -------------------------------------------------------- */
   body {
     background: #000000;
   }
 
   body::before {
     position: fixed;
-    /* ok on modern phones */
     inset: 0;
     background: url("../img/Asset 3.png") center top / 200% auto no-repeat;
     opacity: 0.85;
-    /* very visible on front page */
     filter: none;
-    /* sharp at top */
   }
 
   body.blur-bg::before {
     filter: blur(8px);
-    /* lighter blur than desktop */
     opacity: 0.9;
   }
 
-  /* Hero layout on smaller screens */
+
+  /* --------------------------------------------------------
+     Smaller HEADER for iPhone/tablets
+  -------------------------------------------------------- */
+  .header-inner {
+    padding: 12px 0;       /* smaller header height */
+  }
+
+  .logo-img {
+    height: 32px;          /* reduced logo size */
+    width: auto;
+  }
+
+  .main-nav a {
+    font-size: 13px;
+    padding: 4px 6px;      /* slightly smaller nav links */
+  }
+
+  .nav-toggle {
+    width: 28px;
+    height: 28px;          /* smaller hamburger button */
+  }
+
+  .nav-toggle span {
+    width: 14px;
+  }
+
+
+  /* --------------------------------------------------------
+     Hero section on smaller screens
+  -------------------------------------------------------- */
   .hero {
     min-height: 80vh;
     padding-top: 72px;
@@ -671,7 +698,10 @@ body.blur-bg::before {
     font-size: 30px;
   }
 
-  /* Team - stack everything vertically */
+
+  /* --------------------------------------------------------
+     Team section responsive layout
+  -------------------------------------------------------- */
   .team-grid {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -680,12 +710,14 @@ body.blur-bg::before {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* Contact cards - slightly tighter padding */
+
+  /* --------------------------------------------------------
+     Contact layout and social buttons
+  -------------------------------------------------------- */
   .contact-card {
     padding: 16px 14px;
   }
 
-  /* Social buttons - full width feel, easy to tap */
   .social-buttons {
     align-items: stretch;
   }
@@ -694,7 +726,10 @@ body.blur-bg::before {
     justify-content: flex-start;
   }
 
-  /* Mobile navigation menu */
+
+  /* --------------------------------------------------------
+     Mobile navigation menu
+  -------------------------------------------------------- */
   .site-header {
     backdrop-filter: blur(14px);
   }
@@ -723,29 +758,51 @@ body.blur-bg::before {
 
 /* ----- Phones (max-width: 600px) ----- */
 
+/* ----- Phones (max-width: 600px) ----- */
 @media (max-width: 600px) {
 
+  /* Smaller header for very small screens (iPhones SE / Mini) */
+  .header-inner {
+    padding: 8px 0;          /* slimmer header */
+  }
+
+  .logo-img {
+    height: 28px;            /* smaller logo */
+    width: auto;
+  }
+
+  .main-nav a {
+    font-size: 12px;         /* smaller text */
+    padding: 4px 6px;
+  }
+
+  .nav-toggle {
+    width: 26px;             /* mini hamburger */
+    height: 26px;
+  }
+
+  .nav-toggle span {
+    width: 12px;
+  }
+
+
+  /* Hero section adjustments */
   .hero {
-    padding-top: 68px;
-    padding-bottom: 20px;
-    min-height: 70vh;
+    padding-top: 60px;
+    padding-bottom: 18px;
+    min-height: 65vh;
   }
 
   .hero-text h1 {
-    font-size: 26px;
+    font-size: 24px;
+    line-height: 1.2;
   }
 
+
+  /* Section spacing */
   .section {
-    padding: 60px 0;
+    padding: 50px 0;
   }
 
-  /* Slightly smaller social buttons on very small phones */
-  .social-buttons {
-    gap: 12px;
-  }
 
-  .social-btn {
-    font-size: 13px;
-    padding: 9px 14px;
-  }
-}
+  /* Smaller so*
